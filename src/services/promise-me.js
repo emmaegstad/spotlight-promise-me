@@ -1,35 +1,76 @@
 /**
- * TODO:
+ * TODO: write a fetch request to an API url using .then()
+ * TODO: write a fetch request to an API url using async/await
  */
 
-/**
- * TODO:
- */
+export async function fetchData() {
+  const data = await fetch('https://ponball.herokuapp.com/api/v1/machines');
+  const parsedData = await data.json();
+  console.log('fetchData', parsedData);
+}
+
+export function fetchDataWithThen() {
+  fetch('https://ponball.herokuapp.com/api/v1/machines')
+    .then((data) => data.json())
+    .then((parsedData) => console.log('fetchDataWithThen', parsedData));
+}
 
 /**
- * TODO:
+ * TODO: Return a list of titles
  */
 
-/**
- * TODO:
- */
+export async function fetchTitles() {
+  const data = await fetch('https://ponball.herokuapp.com/api/v1/machines');
+  const parsedData = await data.json();
+  const titleList = parsedData.map((item) => item.title);
+  console.log('fetchTitles', titleList);
+}
+
+export function fetchTitlesWithThen() {
+  fetch('https://ponball.herokuapp.com/api/v1/machines')
+    .then((data) => data.json())
+    .then((parsedData) => parsedData.map((item) => item.title))
+    .then((titleList) => console.log('fetchTitlesWithThen', titleList));
+}
 
 /**
- * TODO:
+ * TODO: Filter by manufacturer (Bally Manufacturing Corporation)
  */
 
-/**
- * TODO:
- */
+export async function filterByManufacturer() {
+  const data = await fetch('https://ponball.herokuapp.com/api/v1/machines');
+  const parsedData = await data.json();
+  const filteredManufacturers = parsedData.filter(
+    (item) => item.manufacturer === 'Bally Manufacturing Corporation'
+  );
+  console.log('filterByManufacturer', filteredManufacturers);
+}
+
+export function filterByManufacturerWithThen() {
+  fetch('https://ponball.herokuapp.com/api/v1/machines')
+    .then((data) => data.json())
+    .then((parsedData) =>
+      parsedData.filter(
+        (item) => item.manufacturer === 'Bally Manufacturing Corporation'
+      )
+    )
+    .then((titleList) =>
+      console.log('filterByManufacturerWithThen', titleList)
+    );
+}
 
 /**
- * TODO:
+ * TODO: Write fetch requests using both methods to the Cat Facts
  */
 
-/**
- * TODO:
- */
+export async function fetchCatFacts() {
+  const data = await fetch('https://cat-fact.herokuapp.com/facts');
+  const parsedData = await data.json();
+  console.log('fetchCatFacts', parsedData);
+}
 
-/**
- * TODO:
- */
+export function fetchCatFactsWithThen() {
+  fetch('https://cat-fact.herokuapp.com/facts')
+    .then((data) => data.json())
+    .then((parsedData) => console.log('fetchCatFactsWithThen', parsedData));
+}
